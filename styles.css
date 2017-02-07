@@ -1,0 +1,35 @@
+.article-page.v1-2 .heading,.article-page.v1-2 #column,.article-page.v1-2 .subheader{display:none}
+.author{display:none}
+
+p {margin: auto; max-width:750px; padding-top:10px;  letter-spacing: 1px; line-height:24px; font-size:18px; color: #1d2129;}
+
+.logo {line-height:20px; height:30px; margin-left:10px; color: #9a9da4; font-size:14px; color: #9a9da4;}
+
+.padding {padding-top: 30px;}
+
+.margin15 {margin: auto; margin-left:15px; margin-right:15px;}
+
+h1 {color: #1d2129; margin-left:15px; margin-right:15px; max-width:750px; letter-spacing: 1px; margin: auto;}
+
+h2 {color: #1d2129; margin-left:15px; margin-right:15px; max-width:750px; letter-spacing: 1px; margin: auto; margin-top:10px;}
+
+h3 {color: #1d2129; margin-left:15px; margin-right:15px; max-width:750px; letter-spacing: 1px; margin: auto; padding-top: 30px;}
+
+.photograph {margin: auto; max-width:750px; margin-top:-15px; letter-spacing: 1px; font-size:14px; color: #9a9da4; text-align: center;}
+
+
+.image-block {width: 100%; height: auto; display: table; position: relative;}
+
+.img-inner img {width: 100%;}
+
+#logo-box {margin: auto; max-width:750px; margin-left:15px; margin-right:15px; height:30px;}
+
+#logo-box1 {float: left; width: 30px; height: 30px;}
+
+#logo-box2 {float: left; vertical-align: middle; font-size: 16px; line-heith: 30px; color: #9a9da4;}
+
+.notice {font-family:Georgia, serif; padding-left: 15px; padding-right: 15px; padding-top: 25px; padding-bottom: 25px;}
+
+.notice-paragraph {font-family:Georgia, serif; margin-top:-25px; margin-bottom:25px; padding-left: 15px; padding-right: 15px;}
+
+.notice-margin {max-width:850px; border: 1px solid #a4a5a6; border-right-width: 0px; border-left-width: 0px; margin-left: 0px; margin-right:0px; margin-top:15px;}

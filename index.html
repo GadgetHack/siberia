@@ -1,0 +1,1282 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <style type="text/css">
+	     @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,900&subset=latin,cyrillic);
+
+	      /*
+	      @font-face {
+		      font-family: 'Roboto';
+		      font-style: normal;
+		      font-weight: 400;
+		      src: local('Roboto'), local('Roboto-Regular'), url(../../fonts/Roboto-regular-400.woff) format('woff');
+	      }
+
+	      @font-face {
+		      font-family: 'Roboto Light';
+		      font-style: normal;
+		      font-weight: 300;
+		      src: local('Roboto'), local('Roboto-Light'), url(../../fonts/Roboto-light-300.woff) format('woff');
+	      }
+	      
+	      @font-face {
+		      font-family: 'Roboto Black';
+		      font-style: normal;
+		      font-weight: 900;
+		      src: local('Roboto'), local('Roboto-Black'), url(../../fonts/Roboto-bold-900.woff) format('woff');
+	      }
+	      */
+
+		* {
+		  -webkit-user-select: none;
+		  -webkit-text-size-adjust: none;
+		  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		  outline: 0;
+		}
+
+		body {
+		  font-family: Roboto;
+		  background-color: white;
+		  color: black;
+		  font-size: 16px;
+		  position: relative;
+		}
+
+		a {
+		  color: #666;
+		}
+
+
+		/* 
+		      Стандартная кнопка: 
+		      список выпусков 
+		      */
+
+		button {
+		  min-width: 86px;
+		  height: 29px;
+		  border: 1px solid #bbb;
+		  background-color: transparent;
+		  color: #700;
+		  font-size: 14px;
+		  -webkit-border-radius: 2px;
+		  -webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+		  margin-bottom: 10px;
+		}
+
+
+		/* Раздельные классы для эмулятора и устройства */
+
+		button:hover {
+		  color: white;
+		  background-color: #700;
+		}
+
+		button:touched {
+		  color: white;
+		  background-color: #700;
+		}
+
+
+		/* плашки */
+
+		.ui-bar {
+		  overflow: hidden;
+		  -webkit-box-sizing: border-box;
+		  border-top: 1px solid #555;
+		  border-bottom: 1px solid #333;
+		  display: table;
+		  position: static;
+		  height: 100%;
+		}
+
+		.ui-bar #inner {
+		  display: table-cell;
+		  vertical-align: middle;
+		  width: 100%;
+		}
+
+		.column {
+		  display: table-cell;
+		  vertical-align: top;
+		  /* посчитанная ширина должна включать border */
+		  -webkit-box-sizing: border-box;
+		}
+
+
+		/* Технический элемент списка */
+
+		.mp-listitems-inner {
+		  width: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+
+
+		/* Слайдер. Рубрикатор */
+
+		.slider-column {
+		  width: 50px;
+		  height: 180px;
+		  position: absolute;
+		  top: 5px;
+		  left: 0px;
+		}
+
+		.adunit .container {
+		  text-align: center;
+		  vertical-align: middle;
+		}
+
+		.adunit .banner {
+		  width: 100%;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		.adunit .banner img {
+		  margin: 0px;
+		  max-width: 100%;
+		}
+
+
+		/* Меню страницы */
+
+		.menu {
+		  width: 100%;
+		  text-align: center;
+		}
+
+		.menu .bar-container {
+		  display: table;
+		  margin: 0 auto;
+		}
+
+		.menu .bar {
+		  display: table-cell;
+		  vertical-align: middle;
+		  padding: 3px;
+		  font-family: Tahoma, Verdana, sans-serif;
+		  font-size: 12px;
+		  color: #700;
+		  text-transform: uppercase;
+		}
+
+		.menu .bar .item {
+		  position: relative;
+		  /*width: 100px;*/
+		  padding: 5px 0 5px 0;
+		  display: inline-block;
+		  text-align: center;
+		  border-left: 1px solid #bbb;
+		}
+
+		.menu .bar .item .menu-text {
+		  margin: 0 10px;
+		}
+
+		.menu .bar .item:nth-child(1) {
+		  border-left: 0;
+		}
+
+		.menu .bar .item:hover {
+		  background-color: #700;
+		  color: white;
+		}
+
+		.menu .bar .item:touched {
+		  background-color: #700;
+		  color: white;
+		}
+
+		.menu .bar .item .menu-text:after {
+		  /*content: ' \25ba';*/
+		}
+
+		.menu .dropdown {
+		  position: absolute;
+		  z-index: 500;
+		  overflow: hidden;
+		  min-width: 200px;
+		}
+
+		@media (min-width:600px) {
+		  .menu .dropdown {
+		    min-width: 300px;
+		  }
+		}
+
+		.menu .bar .dropdown {
+		  color: #700;
+		  padding: 3px;
+		}
+
+		.menu .bar .dropdown .item {
+		  border-left: 0;
+		  border-top: 1px solid #bbb;
+		  width: 100%;
+		  text-align: left;
+		}
+
+		.menu .bar .dropdown .item:nth-child(1) {
+		  border-top: 0;
+		}
+
+		.menu .bar .dropdown .item .menu-text {
+		  margin-left: 10px;
+		}
+
+
+		/* Заголовок страницы */
+
+		.page-title {
+		  display: table;
+		  width: 100%;
+		  /*height: 50px;*/
+		  padding: 10px;
+		  margin: 10px 0 20px 0;
+		  -webkit-box-sizing: border-box;
+		}
+
+		.page-title .text {
+		  width: 100%;
+		  display: table-cell;
+		  font-weight: bold;
+		  vertical-align: middle;
+		  border-top: 1px solid #bbbbbb;
+		  border-bottom: 1px solid #bbbbbb;
+		}
+
+		.page-title .text {
+		  font-size: 22px;
+		  padding: 5px;
+		}
+
+		@media (min-width: 600px) {
+		  .page-title .text {
+		    padding: 10px;
+		  }
+		}
+
+
+		/* Контейнеры, кнопки */
+
+		.box {
+		  border: 1px solid #bbb;
+		  -webkit-border-radius: 2px;
+		  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+		  background-color: rgba(255, 255, 255, 0.95);
+		}
+
+
+		/* ---- messagebox ----- */
+
+		#mp-msgbx {
+		  width: 280px;
+		  margin: 0 auto;
+		  font-family: Roboto;
+		}
+
+		.mp-dialog {
+		  background-color: #ebebec;
+		  -webkit-border-radius: 10px;
+		}
+
+		#mp-msgbx div {
+		  width: 100%;
+		  text-align: center;
+		}
+
+		#mp-msgbx #mp-msgbx-title {
+		  font-size: 18px;
+		  font-weight: bold;
+		  -webkit-box-sizing: border-box;
+		  padding: 10px 10px 0 10px;
+		}
+
+		#mp-msgbx #mp-msgbx-text {
+		  -webkit-box-sizing: border-box;
+		  padding: 15px 10px 0 10px;
+		}
+
+		#mp-msgbx #mp-msgbx-bblock-separator {
+		  margin-top: 20px;
+		  border-top: 1px solid #a4a4a5;
+		}
+
+		#mp-msgbx #mp-msgbx-buttons-block div {
+		  display: inline-block;
+		  width: 45%;
+		  -webkit-box-sizing: border-box;
+		  padding: 12px 0;
+		  color: #157efb;
+		  font-size: 18px;
+		}
+
+		#mp-msgbx #mp-msgbx-buttons-block #mp-msgbx-buttons-separator {
+		  border-left: 1px solid #a4a4a5;
+		  width: 1px;
+		}
+
+		#mp-msgbx #mp-msgbx-prg-outer {
+		  -webkit-border-radius: 2px;
+		  background-color: #a4a4a5;
+		  height: 4px;
+		  margin: 14px auto;
+		  width: 90%;
+		}
+
+		#mp-msgbx #mp-msgbx-prg-inner {
+		  -webkit-border-radius: 2px;
+		  -webkit-box-sizing: border-box;
+		  background-color: #157efb;
+		  height: 100%;
+		}
+
+		.rubric-text {
+		  font-family: Tahoma, Verdana, sans-serif;
+		  color: #700;
+		  text-transform: uppercase;
+		}
+
+		.rubric-text:hover {
+		  color: white;
+		  background-color: #700;
+		}
+
+		.rubric-text:touched {
+		  color: white;
+		  background-color: #700;
+		}
+
+
+		/* Опции, оформленные как стили */
+
+		.article-list .options {
+		  /* block: элементы помещаются вертикально по колонкам
+		      inline: элементы распределяются горизонтально */
+		  display: block;
+		}
+
+		.issue-list .options {
+		  display: inline;
+		}
+
+
+		/* ----- Блок иконки с подложкой из "стопки листов" -------- */
+
+		.icon-box {
+		  position: relative;
+		  float: left;
+		  margin-right: 10px;
+		}
+
+
+		/* Подложка под иконку */
+
+		.icon-box .stack {
+		  border: 1px solid #999;
+		  position: absolute;
+		  background-color: white;
+		}
+
+
+		/* "Листы" снизу вверх */
+
+		.icon-box .stack:nth-child(1) {
+		  top: 4px;
+		  left: 4px;
+		  -webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+		}
+
+		.icon-box .stack:nth-child(2) {
+		  top: 2px;
+		  left: 2px;
+		}
+
+		.icon-box .stack:nth-child(3) {
+		  top: 0;
+		  left: 0;
+		}
+
+
+		/* Иконка */
+
+		.icon-box .icon {
+		  width: 100%;
+		  height: 100%;
+		}
+
+
+		/* ----- Конец блока иконки -------- */
+
+
+		/* Переключатель в стиле ios */
+
+		.jumper {
+		  width: 90px;
+		  height: 30px;
+		}
+
+
+		/* Для страниц в стиле настроек ios */
+
+		.ios-settings {
+		  background-image: url('../../custom/pages/img/page_menu_background.png');
+		  margin: 10px;
+		  padding: 0;
+		  color: black;
+		}
+
+		.ios-settings .title {
+		  color: #888;
+		  font-weight: normal;
+		  font-size: 16px;
+		}
+
+
+		/* Меню в стиле ios */
+
+		.ios-menu-panel {
+		  min-width: 300px;
+		  max-width: 450px;
+		  -webkit-box-sizing: border-box;
+		  margin: 0 auto;
+		  color: black;
+		  font-size: 16px;
+		  font-weight: normal;
+		}
+
+		.ios-menu-panel .menuitem {
+		  height: 43px;
+		  line-height: 43px;
+		  border: 0;
+		  width: 100%;
+		  background-color: white;
+		  text-align: center;
+		}
+
+		.ios-menu-panel .menuitem .separator {
+		  border-top: 1px solid rgb(201, 200, 205);
+		  width: 97%;
+		  float: right;
+		}
+
+		.ios-menu-panel .menuitem.clickable:hover {
+		  background-color: rgb(202, 201, 206);
+		  color: white;
+		}
+
+		.ios-menu-panel .menuitem.clickable:touched {
+		  background-image: -webkit-gradient(linear, left top, left bottom, from(#5588ff), color-stop(0.25, #5080ff), color-stop(0.5, #4878ff), color-stop(0.75, #4070ff), to(#3366ff));
+		  color: white;
+		}
+
+		.ios-menu-panel .menuitem.top {
+		  -webkit-border-radius: 10px 10px 0 0;
+		  /*border-bottom: 0px;*/
+		}
+
+
+		/*
+		      .ios-menu-panel .menuitem.middle {
+		      border-top-width: 1px;
+		      border-bottom: 0px;
+		      }
+		      */
+
+		.ios-menu-panel .menuitem.bottom {
+		  -webkit-border-radius: 0 0 10px 10px;
+		  /*border-top-width: 1px;*/
+		}
+
+		.ios-menu-panel .menuitem.single {
+		  -webkit-border-radius: 10px;
+		}
+
+		.ios-menu-panel .menuitem .label {
+		  display: inline-block;
+		  float: left;
+		  margin-left: 10px;
+		}
+
+		.ios-menu-panel .menuitem .label.single {
+		  display: inline-block;
+		  float: none;
+		  margin: 0 auto;
+		}
+
+		.ios-menu-panel .menuitem .value {
+		  height: 100%;
+		  float: right;
+		  margin-right: 10px;
+		}
+
+		.ios-menu-panel .bullet {
+		  width: 10px;
+		  height: 14px;
+		}
+
+		.ios-menu-panel .menuitem:hover .bullet {
+		  visibility: hidden;
+		}
+
+
+		/* Не удалось нормально отцентрировать jumper по вертикали, положение подобрано вручную */
+
+		.ios-menu-panel .menuitem .value .jumper {
+		  margin-top: 8px;
+		}
+
+		.badge {
+		  right: 0px;
+		  top: 0px;
+		  height: 20px;
+		  /*	min-width: 20px;*/
+		  min-width: 16px;
+		  -webkit-box-sizing: content-box;
+		  position: absolute;
+		  text-align: center;
+		  line-height: 20px;
+		  font-size: 17px;
+		  font-weight: bold;
+		  font-family: Arial, Tahoma, sans-serif;
+		  color: white;
+		  /*	-webkit-border-radius: 12px; */
+		  padding: 0px;
+		  /*	border: 2px solid white;  */
+		  /*	border: 1px solid white;	*/
+		  /*	background-color: rgb(173, 39, 52);*/
+		  background-color: rgb(223, 23, 23);
+		  background-image: -webkit-radial-gradient(center -5px, 30px 20px, white, #c01);
+		}
+
+		.badge-long {
+		  padding: 0px 3px;
+		}
+
+		.mp-icon-audio {
+		  width: 30px;
+		}
+
+		#page_about #devid {
+		  font-size: 70%;
+		}
+
+		#facebook_page #userinfo {
+		  padding-bottom: 20px;
+		  font-weight: normal;
+		}
+
+		#facebook_page #userinfo #uinfo {
+		  font-weight: bold;
+		}
+
+
+		/*   facebook dialog  */
+
+		#mp-msgbx.fbdialog {
+		  width: 280px;
+		  font-family: Arial, Verdana, Helvetica, sans-serif;
+		  font-size: 11px;
+		  padding: 0px 0 0 0;
+		  border: 1px solid #000;
+		}
+
+		#mp-msgbx.fbdialog #mp-msgbx-text {
+		  font-weight: normal;
+		  font-size: 11px;
+		  color: #000;
+		  border: 0;
+		  padding-bottom: 0;
+		  text-align: left;
+		  width: 95%;
+		  margin: 0 auto;
+		}
+
+		#mp-msgbx.fbdialog .mp-msgbx-buttons-block {
+		  border-top: 1px solid #bdc7d8;
+		  background-color: #f2f2f2;
+		  text-align: right;
+		  padding-top: 5px;
+		  padding-bottom: 5px;
+		}
+
+		#mp-msgbx.fbdialog button {
+		  height: 20px;
+		  font-weight: bold;
+		  font-size: 11px;
+		  -webkit-border-radius: 0px;
+		  -webkit-box-shadow: none;
+		  margin: 5px;
+		}
+
+		#mp-msgbx.fbdialog #mp-msgbx-ok {
+		  min-width: 20px;
+		  background-color: #5b74a8;
+		  border-color: #29447e #29447e #1a356e;
+		  color: #fff;
+		}
+
+		#mp-msgbx.fbdialog #mp-msgbx-cancel {
+		  min-width: 20px;
+		  color: #000;
+		  background-color: #eee;
+		  border: 1px solid #999;
+		  border-bottom-color: #888;
+		  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+		}
+
+		#mp-msgbx.fbdialog textarea {
+		  font-family: Arial, Verdana, Helvetica, sans-serif;
+		  font-size: 11px;
+		  color: #777;
+		  border: 1px solid #777;
+		  width: 95%;
+		}
+
+		#mp-msgbx .mp-msgbx-inputtext textarea {
+		  -webkit-user-select: auto;
+		  height: 60px;
+		}
+
+		@media (min-height: 600px) {
+		  #mp-msgbx.fbdialog {
+		    width: 380px;
+		  }
+		  #mp-msgbx .mp-msgbx-inputtext textarea {
+		    -webkit-user-select: auto;
+		    height: 100px;
+		  }
+		}
+
+
+		/* Search bar */
+
+		.mp-search-bar-place {
+		  background-color: #19b7f1;
+		  height: 45px;
+		}
+
+		.mp-search-bar {
+		  /*margin: 5px;
+		      padding: 0 5px 0 5px;*/
+		}
+
+		.mp-search-bar table {
+		  border: 0;
+		  border-spacing: 0;
+		  height: 100%;
+		  margin-left: 20px;
+		}
+
+		.mp-search-bar input {
+		  width: 100%;
+		  margin: 0;
+		  -webkit-user-select: auto;
+		  border: 0;
+		  color: #fff;
+		  background-color: #19b7f1;
+		  font-size: 16px;
+		  font-family: "Roboto Light"
+		}
+
+		.mp-search-bar .mp-search-icon {
+		  width: 20px;
+		}
+
+		.mp-search-bar .mp-search-icon img {
+		  height: 45px;
+		}
+
+		.mp-search-bar .mp-search-button {
+		  width: 1%;
+		}
+
+		.mp-search-bar .mp-search-button img {
+		  height: 20px;
+		  margin-right: 15px;
+		}
+
+		.mp-loading-indicator {
+		  text-align: center;
+		}
+
+		.mp-loading-indicator img {
+		  width: 64px;
+		  height: 64px;
+		}
+
+
+		/* Стили каталога */
+
+		body.mp-catalog-page {
+		  font-family: "Roboto Light", sans-serif;
+		  font-size: 16px;
+		  background-color: #f5f5f5;
+		}
+
+		.mp-catalog-page .page-title .text {
+		  font-weight: normal;
+		  color: #aaa;
+		}
+
+		.mp-catalog-page button {
+		  -webkit-box-shadow: none;
+		  -webkit-border-radius: 4px;
+		  color: #008cc0;
+		  border: 2px solid #008cc0;
+		}
+
+		.mp-catalog-page button:hover {
+		  color: white;
+		  background-color: #008cc0;
+		}
+
+		.mp-catalog-page button:touched {
+		  color: white;
+		  background-color: #008cc0;
+		}
+
+		.mp-catalog-page .page-title {
+		  margin: 10px 0 5px 0;
+		}
+    </style>
+    <style type="text/css">
+		body.issue-list {
+		  margin: 10px 0;
+		  padding: 0;
+		  background-image: url('../../custom/pages/img/page_issuelist_background.jpg');
+		}
+
+		.issue-list .column {
+		  min-width: 315px;
+		  border-left: 3px double #ddd;
+		}
+
+		.issue-list .column:nth-child(1) {
+		  border-left-width: 0;
+		}
+
+
+		/* Контейнер элемента списка */
+
+		.issue-list .list-item {
+		  padding: 10px;
+		  min-height: 240px;
+		}
+
+
+		/* ----- Блок иконки -------- 
+		      Дефолт: для телефонов
+		      */
+
+		.issue-list .list-item .icon-box {
+		  width: 156px;
+		  height: 212px;
+		}
+
+
+		/* Подложка под иконку */
+
+		.issue-list .list-item .icon-box .stack {
+		  width: 144px;
+		  height: 200px;
+		}
+
+
+		/* ----- Конец блока иконки -------- */
+
+
+		/* Кнопки и информация */
+
+		.issue-list .actions {
+		  display: inline-block;
+		}
+
+
+		/* Разделитель */
+
+		.issue-list .list-item .hr {
+		  width: 100%;
+		  height: 2px;
+		  border-top: 1px solid #bbb;
+		  margin-bottom: 15px;
+		}
+
+		.issue-list .list-item:nth-child(1) .hr {
+		  visibility: hidden;
+		}
+
+
+		/* Год, номер*/
+
+		.issue-list .number {
+		  color: #700;
+		  font-weight: bold;
+		  margin-bottom: 10px;
+		}
+
+
+		/* Размер, статус */
+
+		.issue-list .info {
+		  font-family: Tahoma, Verdana, sans-serif;
+		  color: #777;
+		  font-size: 14px;
+		  margin-bottom: 5px;
+		}
+
+		.issue-list .actions .buttons {
+		  margin-top: 15px;
+		}
+
+		.issue-list .actions .button {
+		  display: block;
+		}
+
+		.issue-list .descr {
+		  color: #555;
+		  font-size: 14px;
+		  padding-top: 10px;
+		  clear: left;
+		  word-wrap: break-word;
+		}
+
+
+		/* --- Highlight --- */
+
+		.issue-list .highlight {
+		  min-height: 300px;
+		  padding: 10px;
+		  display: none;
+		  /* Для телефонов hightlight не используется */
+		}
+
+		.issue-list .highlight .icon-box {
+		  width: 204px;
+		  height: 279px;
+		}
+
+		.issue-list .highlight .icon-box .stack {
+		  width: 192px;
+		  height: 267px;
+		}
+
+		.issue-list .highlight .descr {
+		  clear: none;
+		  width: 80%;
+		  min-height: 150px;
+		  margin-bottom: 20px;
+		}
+
+		.issue-list .highlight .hr {
+		  height: 3px;
+		  border-bottom: 3px double #ddd;
+		  width: 100%;
+		  clear: left;
+		}
+
+
+		/* Планшет: включаем highlight, убираем кнопки и инфо из ячеек 
+		      * пока выключено, должно быть min-width:600px
+		      * нужно также раскомментировать код в IssueFactory.createListItem() и IssueListWMDM.refresh()
+		      */
+
+		@media (min-width:60000px) {
+		  body.issue-list {
+		    margin: 0 50px;
+		  }
+		  .issue-list .list-item {
+		    min-height: 240px;
+		  }
+		  .issue-list .list-item .icon-box {
+		    width: 156px;
+		    height: 212px;
+		  }
+		  .issue-list .list-item .icon-box .stack {
+		    width: 144px;
+		    height: 200px;
+		  }
+		  .issue-list .list-item .actions {
+		    display: none;
+		  }
+		  .issue-list .list-item .descr {
+		    display: none;
+		  }
+		  .issue-list .list-item .hr {
+		    /*display: none;*/
+		  }
+		  .issue-list .column {
+		    border: 0;
+		    min-width: 190px;
+		  }
+		  .issue-list .highlight {
+		    display: block;
+		  }
+		}
+
+		.issue-list .mp-subscr-item {
+		  padding: 4px 8px;
+		  font-size: 16px;
+		  color: black;
+		  text-align: center;
+		}
+
+		.issue-list .mp-subscr-item .mp-subscr-product {
+		  font-weight: bold;
+		}
+
+		.issue-list .mp-subscr-item.mp-clickable {
+		  color: #777;
+		  text-decoration: underline;
+		}
+	</style>
+	<style type="text/css">
+	  	.article-page.v1-2 .heading, 
+	  	.article-page.v1-2 #column, 
+	  	.article-page.v1-2 .subheader {
+		  display: none
+		}
+
+		.author {
+		  display: none
+		}
+
+		p {
+		  margin: auto;
+		  max-width: 750px;
+		  padding-top: 10px;
+		  letter-spacing: 1px;
+		  line-height: 24px;
+		  font-size: 18px;
+		  color: #1d2129;
+		}
+
+		.logo {
+		  line-height: 20px;
+		  height: 30px;
+		  margin-left: 10px;
+		  color: #9a9da4;
+		  font-size: 14px;
+		  color: #9a9da4;
+		}
+
+		.padding {
+		  padding-top: 30px;
+		}
+
+		.margin15 {
+		  margin: auto;
+		  margin-left: 15px;
+		  margin-right: 15px;
+		}
+
+		h1 {
+		  color: #1d2129;
+		  margin-left: 15px;
+		  margin-right: 15px;
+		  max-width: 750px;
+		  letter-spacing: 1px;
+		  margin: auto;
+		}
+
+		h2 {
+		  color: #1d2129;
+		  margin-left: 15px;
+		  margin-right: 15px;
+		  max-width: 750px;
+		  letter-spacing: 1px;
+		  margin: auto;
+		  margin-top: 10px;
+		}
+
+		h3 {
+		  color: #1d2129;
+		  margin-left: 15px;
+		  margin-right: 15px;
+		  max-width: 750px;
+		  letter-spacing: 1px;
+		  margin: auto;
+		  padding-top: 30px;
+		}
+
+		.photograph {
+		  margin: auto;
+		  max-width: 750px;
+		  margin-top: -15px;
+		  letter-spacing: 1px;
+		  font-size: 14px;
+		  color: #9a9da4;
+		  text-align: center;
+		}
+
+		.image-block {
+		  width: 100%;
+		  height: auto;
+		  display: table;
+		  position: relative;
+		}
+
+		.img-inner img {
+		  width: 100%;
+		}
+
+		#logo-box {
+		  margin: auto;
+		  max-width: 750px;
+		  margin-left: 15px;
+		  margin-right: 15px;
+		  height: 30px;
+		}
+
+		#logo-box1 {
+		  float: left;
+		  width: 30px;
+		  height: 30px;
+		}
+
+		#logo-box2 {
+		  float: left;
+		  vertical-align: middle;
+		  font-size: 16px;
+		  line-heith: 30px;
+		  color: #9a9da4;
+		}
+
+		.notice {
+		  font-family: Georgia, serif;
+		  padding-left: 15px;
+		  padding-right: 15px;
+		  padding-top: 25px;
+		  padding-bottom: 25px;
+		}
+
+		.notice-paragraph {
+		  font-family: Georgia, serif;
+		  margin-top: -25px;
+		  margin-bottom: 25px;
+		  padding-left: 15px;
+		  padding-right: 15px;
+		}
+
+		.notice-margin {
+		  max-width: 850px;
+		  border: 1px solid #a4a5a6;
+		  border-right-width: 0px;
+		  border-left-width: 0px;
+		  margin-left: 0px;
+		  margin-right: 0px;
+		  margin-top: 15px;
+		}
+    </style>
+  </head>
+  <body class="issue-list issuelist">
+    <div id="page_menu" class="mp-page-menu"></div>
+    <div class="page-title">
+      <div class="text" id="issues.header">Выпуски</div>
+    </div>
+    <div id="highlight" class="highlight"></div>
+    <div class="mp-subscr-place">
+      <!--
+        <div class="mp-subscr-item mp-clickable">Подписаться на <span class="mp-subscr-product">Фитнес эксперт</span> на 1 год за 33.00 RUR</div>
+        <div class="mp-subscr-item">Вы подписаны на <span class="mp-subscr-product">Фитнес эксперт</span> до 01.01.2015</div>
+        -->
+    </div>
+    <div id="listitems">
+      <div style="width: 100%; display: table; padding: 0; margin: 0">
+        <div style="display: table-row">
+          <div class="column " style="width: 341px">
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i24" id="a_t3i24"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/615" class="icon" onclick="module.onItemEvent('select', 24, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">Editorial</div>
+                  <div class="info">0.43 Mb</div>
+                  <div class="info">Не загружен</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('download', 24, 3)">Скачать</button></div>
+                  </div>
+                </div>
+                <div class="descr">Recently I came across the saying: “Even demons will not live in Siberia!” That is not quite true though. They do, it is just that they do not enjoy it much, and they do not live as long. It is just not the right climate. They would rather be in Monte Carlo or Courchevel, but not everyone is so lucky...
+                  Today there are three Russias: The Russia of glamour, land of glossy magazine covers, billionaire ratings, show-business blonds, tickets to the Canary Islands, very expensive psychoanalysts and diamante seamed stockings. It is a country of luxuries and pink limousines. The second Russia hardly glitters diamonds. It is the Russia we are familiar with from the news columns and publications in the western press. If you did not leave your flat for any length of time and followed what was happening via the internet you would be quick to assume that we live in an endless crime report which is occasionally diversified by exchange rates, technological disasters and the elections. Of course, all this makes a particular impression on the citizens of the rest of the world.
+                  Almost nothing is known of the third Russia. This Russia is of no interest to those who collect foreign property, or trade the news. That it does exist is beyond dispute for it does not just abide in the sphere of the news world; it is right here, all around us.
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i21" id="a_t3i21"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/555" class="icon" onclick="module.onItemEvent('select', 21, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">People</div>
+                  <div class="info">1.92 Mb</div>
+                  <div class="info">90.00 р.</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('select', 21, 3)">Купить</button></div>
+                  </div>
+                </div>
+                <div class="descr">I happened to meet with hermits on various occasions during my travels, people who had chosen to live in the wilds of the Siberian taiga. These recluse had travelled voluntarily to the middle of nowhere, leaving their own world behind, sacrificing the benefits of the modern civilized world. Why?  
+                  I must have read two dozen works by renowned psychologists on the problem of loneliness but failed to find an answer to the question. The scientists' conclusions just did not mesh with what I had seen in real life. Many researchers describe loneliness as an illness, a reflection of our inner flaws. Others take a slightly more patronizing stance describing loneliness as a condition in which the individual is incapable of adapting to life. They agree on one thing however: it is an affliction. And according to survey data, the majority of the world's population are familiar with it bitter taste. I met the hermit Ivan Zhukov at Lake Agulskoe in the Sayan mountains. The areas in which he lives are incredibly beautiful, preserved, and very remote. So remote, that you can only get there by helicopter.
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i23" id="a_t3i23"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/596" class="icon" onclick="module.onItemEvent('select', 23, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">People</div>
+                  <div class="info">1.98 Mb</div>
+                  <div class="info">90.00 р.</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('select', 23, 3)">Купить</button></div>
+                  </div>
+                </div>
+                <div class="descr">Kaloshin's entire property consists of a house, a dog and eighty thousand books, although, strictly speaking, the books do not belong to him but to the library, and the situation with the house is not that simple either. It holds a large public reading room and an endless labyrinth of book shelves, which just leaves...the dog.
+                  The pickings are slim but the Altai librarian does not seem too bothered by his financial situation. Ten years ago when Leonid Kaloshin first began creating a library there was enough room in the house for him and the books but eventually he ended up sacrificing the bedroom. Then Leonid Kaloshin build an extension, a small room (2.40 to 2.40) in place of a porch, in which he placed a couch and a personal bookcase.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column " style="width: 341px">
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i14" id="a_t3i14"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/622" class="icon" onclick="module.onItemEvent('select', 14, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">Travel</div>
+                  <div class="info">1.16 Mb</div>
+                  <div class="info">Не загружен</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('download', 14, 3)">Скачать</button></div>
+                  </div>
+                </div>
+                <div class="descr">Yakutia is a land of fishing legends. Grayling, mackerel, huge pike and giant Siberian trout all came alive in the tales of those lucky enough to have been there. And afterwards they come to life in my imagination.
+                  It so happened that my brother Zafar ended up at the very centre of Yakutia when he was still a student. His group were doing their geological field work experience in the region of the Verkhoyansky pass. I did not see him until September. When we met I asked him how he had found Yakutia. His reply was simple, brief and clear: “A day or two more and I would have stayed for good!”
+                  Later my brother would nostalgically recall the severe conditions of the distant region; the small hare that fearlessly “greeted” them each morning as they crawled out of their tents; the huge grayling that pushed and shoved each other like piglets for the remains of the expedition rations floating in the stream … In short, all these years we fantasized about Yakutia.
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i19" id="a_t3i19"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/633" class="icon" onclick="module.onItemEvent('select', 19, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">People</div>
+                  <div class="info">5.22 Mb</div>
+                  <div class="info">120.00 р.</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('select', 19, 3)">Купить</button></div>
+                  </div>
+                </div>
+                <div class="descr">A Tribute to the Legendary Siberian Author Valentin Rasputin (1937–2015), 2008
+                  Valentin Rasputin is the only classic Siberian author still with us and yet we hardly ever hear his voice. I travelled to Irkutsk to meet him and to learn the reason for his reclusion, for in the seventeen years that have passed since the appearance of his novel “Fire” only the occasional short story has reminded us of his existence.But there was something else I wanted to talk to him about too, something more important...
+                  I was haunted by a conversation I had with Viktor Astafiev whilst he was still in hospital. Astafiev knew he did not have long to live so I was careful not to bring up any of the "painful" topics of conversation, especially his estrangement with Valentin Rasputin. Differences in political views had placed an insurmountable barrier between them making the two great writers enemies after many years of spiritual affinity.
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i22" id="a_t3i22"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/577" class="icon" onclick="module.onItemEvent('select', 22, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">Cuisine</div>
+                  <div class="info">3.88 Mb</div>
+                  <div class="info">90.00 р.</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('select', 22, 3)">Купить</button></div>
+                  </div>
+                </div>
+                <div class="descr">Expressed in grandiose fashion ‘ukha‘ is a triumph, a culinary diamond in the dazzling crown of high Russian cuisine. You could say that ‘ukha‘ (Russian fish soup), for all the tales, proverbs and sayings that have been dedicated to it, is a legendary dish.
+                  In old, pre-Petrine times, ukha referred to any thick, clear bouillon, including those cooked from meat. A.K. Tolstoy‘s “Silver Prince” immediately comes to mind: "They served various broths and three kinds of ukha: white chicken, black chicken and saffron chicken." Now, however, ukha is only made from fish. The word today may have no other connotations, but it does command almost reverential respect. And understandably so, as ukha represents a significant part of our national heritage. Only in Russia do they really know how to cook ukha.
+                  Ukha is particularly good when cooked on a camp-fire in the coniferous forests of the Siberian taiga, from freshly caught, often live fish that have not had the chance to dry out or go stale.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column " style="width: 341px">
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i18" id="a_t3i18"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/626" class="icon" onclick="module.onItemEvent('select', 18, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">People</div>
+                  <div class="info">1.24 Mb</div>
+                  <div class="info">Не загружен</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('download', 18, 3)">Скачать</button></div>
+                  </div>
+                </div>
+                <div class="descr">I first heard about Peregudov the wolf hunter, ‘volchatnik‘, a couple of years ago from Alexander Zateev, director of the Katun Biosphere Reserve. I do not remember how we started talking about him. I think Alexander was telling me something about the habits of wolves, and then remembered the famous hunter.
+                  – Kuzma Mitrofanych knows all about them here. Once he had an unlicensed shotgun confiscated. It was his only one. So he caught a live wolf in the forest with his bare hands and dragged it to the police station. Take it away, he says, I have brought you in another criminal. They gave him back his shotgun instantly. Pop in and see the old man. You won't regret it.
+                  I remembered the story about the shotgun but it is only now that I finally managed to visit the wolf hunter. Once again, travelling through Altai, I persuaded the photographer Andrei Gilbert to drive to Talda, where Peregudov lives to this day.
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="hr"></div>
+              <a name="a_t3i20" id="a_t3i20"></a>						
+              <div style="width: 100%; height: 100%; position: relative; margin: 0; padding: 0">
+                <div class="icon-box">
+                  <div class="stack"></div>
+                  <div class="stack"></div>
+                  <div class="stack"><img src="/index.php/file/541" class="icon" onclick="module.onItemEvent('select', 20, 3)"></div>
+                </div>
+                <div class="actions">
+                  <div class="number">Nature</div>
+                  <div class="info">2.71 Mb</div>
+                  <div class="info">60.00 р.</div>
+                  <div class="buttons">
+                    <div class="button"><button onclick="module.onItemEvent('select', 20, 3)">Купить</button></div>
+                  </div>
+                </div>
+                <div class="descr">A quick glance at a map is enough to understand that Siberia is a land of great rivers and lakes. And the people who assimilated these harsh spaces settled mainly along the banks of the rivers where there were practically no roads to speak off. And the rivers were blessed with, and continue to be blessed with an abundance of fish.
+                  Siberia does not just have a lot of fish, it has a huge quantity of fish in all kinds of varieties: black (pike, burbot, carp, dace), red (sturgeon, sterlet), and white (nelma, omul, broad whitefish, muksun, grayling, and togunok).
+                  In north Siberia the attitude towards black fish is dismissive, particularly in the case of burbot. They cut out the liver (here they call it “maksa”) and throw the rest of the fish away much to the delight of the foxes and gulls. The attitude to pike is much the same and is not considered a real fish, although from time to time when hunting they will fry a meal of two or three young pike.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
